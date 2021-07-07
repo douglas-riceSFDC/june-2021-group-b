@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description
+  >This indicates a title has been selected from the Title Grid UI</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>This the title that has been selected</description>
+        <fieldName>title</fieldName>
+    </lightningMessageFields>
+    <masterLabel>Selected_Title</masterLabel>
+</LightningMessageChannel>
