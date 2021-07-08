@@ -2,7 +2,8 @@ global with sharing class OmdbConnection {
     private String httpMethod = 'GET';
     private String omdbURLBase = 'http://www.omdbapi.com/';
 
-    // (?) TODO: Reference from encrypted .txt file (?)
+    // (?) TODO:    -> Reference from encrypted .txt file (?)
+    //              -> or label?
     private String omdbKey = '4339b121';
 
     public void OmdbConnection(){}

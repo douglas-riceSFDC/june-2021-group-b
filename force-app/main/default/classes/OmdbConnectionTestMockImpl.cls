@@ -1,28 +1,26 @@
 @isTest
-global class OmdbConnectionTestMockImpl {
+global class OmdbConnectionTestMockImpl implements HttpCalloutMock{
+    private String omdbURLBase = 'http://www.omdbapi.com/';
+
+    // (?) TODO:    -> Reference from encrypted .txt file (?)
+    //              -> Or label?
+    private String omdbKey = '4339b121';
 
     global HttpResponse respond(HTTPRequest req){
-        OmdbConnection omdbc = new OmdbConnection();
-        HttpResponse res = omdbc.getOmdbResponse('Harry');
+        String omdbSearchString = '?s=%27' + 'Harry%20Potter' + '%27&apikey=' + omdbKey;
+        String omdbURL = omdbURLBase + omdbSearchString;
 
-        Test.startTest();
+        // System.assertEquals('http://api.salesforce.com/foo/bar', req.getEndpoint());
+        System.assertEquals(omdbURL, req.getEndpoint());
+        System.assertEquals('GET', req.getMethod());
 
-        List<OmdbWrapperClass> movies = omdbc.parseOmdbJsonFromHttpResponse(res);
-        
-
-        Test.stopTest();
-
-        System.assert(movies.size() > 0);
-
-         //System.assertEquals('http://api.salesforce.com/foo/bar', req.getEndpoint());
-        System.assertEquals(System.Label.Integration_URL+'?sfdcid=0011300001schfFAAQ&operation=create', req.getEndpoint());
-        System.assertEquals('POST', req.getMethod());
         HttpResponse res = new HttpResponse();
         
-        res.setHeader('Content-Type', 'application/json');
-        res.setBody('{"Search":[{"Title":"Inception","Year":"2010","imdbID":"tt1375666","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"},{"Title":"Inception: The Cobol Job","Year":"2010","imdbID":"tt5295894","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMjE0NGIwM2EtZjQxZi00ZTE5LWExN2MtNDBlMjY1ZmZkYjU3XkEyXkFqcGdeQXVyNjMwNzk3Mjk@._V1_SX300.jpg"},{"Title":"Inception: Jump Right Into the Action","Year":"2010","imdbID":"tt5295990","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZGFjOTRiYjgtYjEzMS00ZjQ2LTkzY2YtOGQ0NDI2NTVjOGFmXkEyXkFqcGdeQXVyNDQ5MDYzMTk@._V1_SX300.jpg"},{"Title":"Inception: Motion Comics","Year":"2010–","imdbID":"tt1790736","Type":"series","Poster":"https://m.media-amazon.com/images/M/MV5BNGRkYzkzZmEtY2YwYi00ZTlmLTgyMTctODE0NTNhNTVkZGIxXkEyXkFqcGdeQXVyNjE4MDMwMjk@._V1_SX300.jpg"},{"Title":"The Crack: Inception","Year":"2019","imdbID":"tt6793710","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZTU1M2U4OWUtZTQ5OS00OWM1LTljN2EtMWJmZDgxNzUwZGNkXkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_SX300.jpg"},{"Title":"Inception","Year":"2014","imdbID":"tt7321322","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYWJmYWJmNWMtZTBmNy00M2MzLTg5ZWEtOGU5ZWRiYTE0ZjVmXkEyXkFqcGdeQXVyNzkyOTM2MjE@._V1_SX300.jpg"},{"Title":"Inception: 4Movie Premiere Special","Year":"2010","imdbID":"tt1686778","Type":"movie","Poster":"N/A"},{"Title":"WWA: The Inception","Year":"2001","imdbID":"tt0311992","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNTEyNGJjMTMtZjZhZC00ODFkLWIyYzktN2JjMTcwMmY5MDJlXkEyXkFqcGdeQXVyNDkwMzY5NjQ@._V1_SX300.jpg"},{"Title":"Cyberalien: Inception","Year":"2017","imdbID":"tt7926130","Type":"movie","Poster":"N/A"},{"Title":"Bikini Inception","Year":"2015","imdbID":"tt8269586","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNDk3NTNmNGEtOWJkYi00NGEyLThkZDQtOTBlZmRhN2IwYTk0XkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_SX300.jpg"}],"totalResults":"27","Response":"True"}');
+        // res.setHeader('Content-Type', 'application/json');
+        res.setBody('{"Search":[{"Title":"Harry Potter and the Deathly Hallows: Part 2","Year":"2011","imdbID":"tt1201607","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMGVmMWNiMDktYjQ0Mi00MWIxLTk0N2UtN2ZlYTdkN2IzNDNlXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg"},{"Title":"Harry Potter and the Sorcerers Stone","Year":"2001","imdbID":"tt0241527","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNjQ3NWNlNmQtMTE5ZS00MDdmLTlkZjUtZTBlM2UxMGFiMTU3XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg"},{"Title":"Harry Potter and the Chamber of Secrets","Year":"2002","imdbID":"tt0295297","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTcxODgwMDkxNV5BMl5BanBnXkFtZTYwMDk2MDg3._V1_SX300.jpg"},{"Title":"Harry Potter and the Prisoner of Azkaban","Year":"2004","imdbID":"tt0304141","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTY4NTIwODg0N15BMl5BanBnXkFtZTcwOTc0MjEzMw@@._V1_SX300.jpg"},{"Title":"Harry Potter and the Goblet of Fire","Year":"2005","imdbID":"tt0330373","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTI1NDMyMjExOF5BMl5BanBnXkFtZTcwOTc4MjQzMQ@@._V1_SX300.jpg"},{"Title":"Harry Potter and the Order of the Phoenix","Year":"2007","imdbID":"tt0373889","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTM0NTczMTUzOV5BMl5BanBnXkFtZTYwMzIxNTg3._V1_SX300.jpg"},{"Title":"Harry Potter and the Deathly Hallows: Part 1","Year":"2010","imdbID":"tt0926084","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTQ2OTE1Mjk0N15BMl5BanBnXkFtZTcwODE3MDAwNA@@._V1_SX300.jpg"},{"Title":"Harry Potter and the Half-Blood Prince","Year":"2009","imdbID":"tt0417741","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNzU3NDg4NTAyNV5BMl5BanBnXkFtZTcwOTg2ODg1Mg@@._V1_SX300.jpg"},{"Title":"Harry Potter and the Forbidden Journey","Year":"2010","imdbID":"tt1756545","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNDM0YzMyNGUtMTU1Yy00OTE2LWE5NzYtZDZhMTBmN2RkNjg3XkEyXkFqcGdeQXVyMzU5NjU1MDA@._V1_SX300.jpg"},{"Title":"Harry Potter and the Chamber of Secrets","Year":"2002","imdbID":"tt0304140","Type":"game","Poster":"https://m.media-amazon.com/images/M/MV5BNTM4NzQ2NjA4NV5BMl5BanBnXkFtZTgwODAwMjE4MDE@._V1_SX300.jpg"}],"totalResults":"110","Response":"True"}');
         res.setStatusCode(200);
         return res;
 
     }
+
 }
