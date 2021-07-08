@@ -42,11 +42,12 @@ public with sharing class TitleAuraService {
   }
 
   @AuraEnabled
-  public static List<Title__c> getNewAndFeaturedTitles() {
+  public static List<Title__c> getNewAndFeaturedTitles(Integer limiter) {
     return [
       SELECT Poster__c
       FROM Title__c
       WHERE CreatedDate > :Date.today().addDays(-7)
+      LIMIT :limiter
     ];
   }
 }
