@@ -1,0 +1,48 @@
+<template>
+  <lightning-button
+    variant="outline_brand"
+    label="View Reviews"
+    title="Review Button"
+    onclick={toggleReviews}
+  ></lightning-button>
+
+  <template if:true={showReviews}>
+    <lightning-card title="Recent Reviews">
+      <lightning-accordion allow-multiple-sections-open>
+        <template for:each={reviews} for:item="review">
+          <lightning-accordion-section
+            name={review.Name}
+            key={review.Name}
+            label={review.Reviewer__r.Name}
+          >
+            <p class="slds-text-align_left">Rating: {review.Rating__c}%</p>
+            <p class="slds-text-align_left">Review: {review.Review__c}</p>
+
+            <p class="slds-text-align_left">
+              {review.Reviewer__r.Name} on
+              <lightning-formatted-date-time
+                value={review.CreatedDate}
+                year="numeric"
+                month="numeric"
+                day="numeric"
+                hour="2-digit"
+                minute="2-digit"
+                weekday="long"
+                hour12="true"
+              ></lightning-formatted-date-time>
+              (Placeholder until profiles pictures set up)
+            </p>
+          </lightning-accordion-section>
+        </template>
+      </lightning-accordion>
+
+      <lightning-button
+        variant="outline_brand"
+        label={moreReviewsLabel}
+        title="Load Review Button"
+        onclick={addMoreReviews}
+        disabled={thereAreNoMoreReviews}
+      ></lightning-button>
+    </lightning-card>
+  </template>
+</template>

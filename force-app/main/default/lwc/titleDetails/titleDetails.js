@@ -10,7 +10,7 @@ export default class TitleDetails extends LightningElement {
 
   connectedCallback() {
     this.subscribeToSelectedTitle();
-    console.log(this.title);
+
     if (this.title != null)
       if (this.title.Available_Stock__c > 0) {
         this.available = true;
@@ -27,7 +27,6 @@ export default class TitleDetails extends LightningElement {
 
   handleSelectedTitleMessage(message) {
     this.title = message.title;
-    console.log(this.title);
   }
 
   // handleRent(event) {
