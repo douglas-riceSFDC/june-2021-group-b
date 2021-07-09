@@ -10,7 +10,7 @@ public with sharing class TestDataFactory {
     public static Stock__c createStock(Id titleId, String status) {
         Stock__c s = new Stock__c();
         s.Title__c = titleId;
-        s.Status__c = 'Available';
+        s.Status__c = status;
 
         return s;
     }
