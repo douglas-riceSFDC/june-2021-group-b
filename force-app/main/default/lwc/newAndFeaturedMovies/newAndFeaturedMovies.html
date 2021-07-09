@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="New and Featured Releases">
+        <div class="slds-scrollable_x">
+            <div class="slds-grid">
+		        <template for:each={titles} for:item="title">
+		    	    <div key={title.Id} class="slds-col slds-size_1-of-10 slds-var-p-around_small">
+				        <c-title-card title={title}></c-title-card>
+			        </div>
+		        </template>
+	        </div>
+        </div>
+    </lightning-card>
+</template>

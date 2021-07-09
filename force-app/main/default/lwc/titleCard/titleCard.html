@@ -1,10 +1,7 @@
 <template>
-	<div onclick={handleTitleSelection}>
-		<lightning-card title={title.Name}>
-			<slot></slot>
-			<div slot="footer">
-				Available {title.Available_Stock__c} / {title.Total_Stock__c}
-			</div>
-		</lightning-card>
-	</div>
+  <div onclick={handleTitleSelection}>
+    <div class="slds-grid">
+      <img title="poster" src={title.Poster__c}>
+    </div>
+  </div>
 </template>
