@@ -1,0 +1,80 @@
+<template>
+  <template if:true={title}>
+    <div>
+      <lightning-card title={title.Name}>
+        <div class="slds-grid">
+          <div class="slds-col slds-size_1-of-2 slds-var-p-around_medium">
+            <div class="slds-grid">
+              <div class="slds-col slds-size_1-of-2">
+                <p><b>Release Date:</b></p>
+                <p>{title.Release_Date__c}</p>
+              </div>
+              <div class="slds-col slds-size_1-of-2">
+                <p><b>Genre: </b></p>
+                <p>{title.Genre__c}</p>
+              </div>
+            </div>
+            <div class="slds-grid">
+              <div class="slds-col slds-size_1-of-2">
+                <p><b>Copies Available: </b></p>
+                <p>{title.Available_Stock__c}</p>
+              </div>
+              <div class="slds-col slds-size_1-of-2">
+                <p><b>Director: </b></p>
+                <p>{title.Director__c}</p>
+              </div>
+            </div>
+            <div class="slds-grid">
+              <div class="slds-col slds-size_1-of-2">
+                <p><b>Runtime: </b></p>
+                <p>{title.Runtime__c} minutes</p>
+              </div>
+              <div class="slds-col slds-size_1-of-2">
+                <p><b>Writer: </b></p>
+                <p>{title.Writer__c}</p>
+              </div>
+            </div>
+            <div class="slds-grid">
+              <div class="slds-col slds-size_1-of-2">
+                <p><b>Summary: </b></p>
+                <p>{title.Plot_Description__c}</p>
+              </div>
+              <div class="slds-col slds-size_1-of-2">
+                <p><b>Starring: </b></p>
+                <p>{title.Notable_Actors__c}</p>
+              </div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_1-of-2 slds-var-p-around_medium">
+            <img alt={title.Name} src={title.Poster__c} />
+          </div>
+        </div>
+
+        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+          <div class="slds-size_1-of-2">
+            <div class="slds-var-p-around_medium" if:true={available}>
+              <lightning-button
+                variant="brand"
+                label="Rent"
+                title="Rent Button"
+              ></lightning-button>
+            </div>
+            <div class="slds-var-p-around_medium" if:false={available}>
+              <lightning-button
+                variant="brand"
+                label="No Copies Available"
+                title="Rent Button"
+                disabled="true"
+              ></lightning-button>
+            </div>
+          </div>
+          <div class="slds-size_1-of-2">
+            <div class="slds-var-p-around_medium">
+              <c-movie-review-form title={title}> </c-movie-review-form>
+            </div>
+          </div>
+        </div>
+      </lightning-card>
+    </div>
+  </template>
+</template>
