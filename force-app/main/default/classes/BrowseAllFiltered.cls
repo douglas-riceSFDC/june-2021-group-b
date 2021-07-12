@@ -26,7 +26,6 @@ public with sharing class BrowseAllFiltered {
                 }
             }
         }
-        system.debug(filteredTitles);
         return filteredTitles;
     }
 

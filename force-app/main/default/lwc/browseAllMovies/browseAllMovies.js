@@ -37,6 +37,5 @@ export default class BrowseAllMovies extends LightningElement {
                     console.log(error);
                 });
         }
-        console.log(this.records);
     }
 }

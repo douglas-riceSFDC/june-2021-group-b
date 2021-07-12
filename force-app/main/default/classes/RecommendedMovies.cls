@@ -6,14 +6,12 @@ public with sharing class RecommendedMovies {
          * Retreive movies to be diplayed in the recommneded movies lightning web component
          * Recommneded movies should share a genre with another movie the user has rented
          */
-        String debug = 'HELLO';
         List<Title__c> recommendedMoviesList = new List<Title__c>();
         List<Rental__c> userRentals = [SELECT Stock__r.Title__r.Genre__c
                                        FROM Rental__c
                                        WHERE Customer__c =: UserInfo.getUserId()];
         List<Title__c> allTitles = [SELECT Name, Genre__c, Poster__c
-                                    FROM Title__c
-                                    LIMIT 20];
+                                    FROM Title__c];
 
         Set<String> myGenres = new Set<String>();
         for (Rental__c myRental : userRentals) {
@@ -37,7 +35,6 @@ public with sharing class RecommendedMovies {
             }
         }
 
-        system.debug(recommendedMoviesList);
         return recommendedMoviesList;
     }
 }
