@@ -1,26 +1,5 @@
 @isTest
 private class OmdbConnectionTest {
-    // TODO ADD SYSTEM ASSERTS
-
-    // HttpResponse res; 
-
-    /*
-    @isTest
-    static void generateGetMovieListFromTitle_GivenTitleWithNoSpaces_shouldGenerateMovieList(){
-        OmdbConnection omdbc = new OmdbConnection();
-        
-        // Set mock callout class    
-        Test.setMock(HttpCalloutMock.class, new OmdbConnectionTestMockImpl());
-
-        Test.startTest();
-
-        List<OmdbWrapperClass> movies = omdbc.getMovieListFromTitle('Harry');
-
-        Test.stopTest();
-
-        System.assert(movies.size() > 0);
-
-    }*/
 
     @isTest
     static void generateGetMovieListFromTitle_GivenTitleWithSymbolsAndSpaces_shouldGenerateMovieList(){
@@ -38,40 +17,6 @@ private class OmdbConnectionTest {
         System.assert(movies.size() > 0);
 
     }
-
-    /*
-    @isTest
-    static void generateGetMovieListFromTitle_GivenTitleWithNumbers_shouldGenerateMovieList(){
-        // Set mock callout class    
-        Test.setMock(HttpCalloutMock.class, new OmdbConnectionTestMockImpl());
-
-        OmdbConnection omdbc = new OmdbConnection();
-
-        Test.startTest();
-
-        List<OmdbWrapperClass> movies = omdbc.getMovieListFromTitle('13');
-
-        Test.stopTest();
-
-        System.assert(movies.size() > 0);
-    }
-    
-
-    @isTest
-    static void generateGetMovieListFromTitle_GivenTitleWithGibberish_shouldGenerateNoMovieList(){
-        // Set mock callout class    
-        Test.setMock(HttpCalloutMock.class, new OmdbConnectionTestMockImpl());
-
-        OmdbConnection omdbc = new OmdbConnection();
-
-        Test.startTest();
-
-        List<OmdbWrapperClass> movies = omdbc.getMovieListFromTitle('adsoigjaposdhga');
-
-        Test.stopTest();
-
-        System.assertEquals(0, movies.size());
-    }*/
 
     @isTest static void testCallout() {
         // (?) TODO:    -> Reference from encrypted .txt file (?)
