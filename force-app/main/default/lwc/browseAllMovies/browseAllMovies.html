@@ -32,14 +32,14 @@
             </div>
           </div>
 
-        <div class="slds-scrollable_x">
-            <div class="slds-grid">
-		        <template for:each={records} for:item="record">
-		    	    <div key={title.Id} class="slds-col slds-size_1-of-10 slds-var-p-around_small">
-				        <c-title-card title={record}></c-title-card>
-			        </div>
-		        </template>
-	        </div>
-        </div>
+        
+        <div class="slds-grid">
+		      <template for:each={records} for:item="record">
+		    	  <div key={title.Id} class="slds-col slds-size_1-of-10 slds-var-p-around_small">
+				      <c-title-card title={record}></c-title-card>
+			      </div>
+		      </template>
+	      </div>
+        
     </lightning-card>
 </template>
