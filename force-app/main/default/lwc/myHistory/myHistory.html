@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="My History" icon-name="standard:lightning_component">
+
+   
+        <!--<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                      <th>Title Name</th> 
+                      <th>Date Rented</th>
+                      <th>Date Returned</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <template for:each={rentalRecords} for:item="singleRecord">
+                    <tr key={singleRecord.Id} >
+                            <td>{singleRecord.Title_Name__c}</td> &nbsp;
+                            <td>{singleRecord.Date_Rented__c}</td> &nbsp;
+                            <td>{singleRecord.Date_Returned__c}</td> 
+                    </tr>
+                    </template>
+            <template if:true={errors} >
+                There is an Error while fetching data.
+            </template>
+            </tbody>
+        </table>-->
+        
+  <lightning-datatable  key-field="id"
+                         data={rentalRecords} 
+                         hide-checkbox-column
+                         columns={columns} >
+    </lightning-datatable>
+</lightning-card>
+    
+</template>

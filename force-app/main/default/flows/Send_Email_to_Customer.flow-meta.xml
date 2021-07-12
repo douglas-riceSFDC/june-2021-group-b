@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Send_Email_Alert</name>
         <label>Send Email Alert</label>
-        <locationX>742</locationX>
-        <locationY>228</locationY>
+        <locationX>794</locationX>
+        <locationY>229</locationY>
         <actionName>Rental__c.EmailCustomerReviewRequest</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -43,17 +43,40 @@
         </inputParameters>
     </actionCalls>
     <apiVersion>52.0</apiVersion>
+    <assignments>
+        <name>AssignRentalRecordNewValues</name>
+        <label>AssignRentalRecordNewValues</label>
+        <locationX>508</locationX>
+        <locationY>229</locationY>
+        <assignmentItems>
+            <assignToReference>getRentalRecords.Returned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>getRentalRecords.Date_Returned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>upDateRentalRecord</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>Do_Rental_records_Exist</name>
         <label>Do Rental records Exist?</label>
-        <locationX>339</locationX>
+        <locationX>318</locationX>
         <locationY>234</locationY>
         <defaultConnector>
             <targetReference>Send_verification_Email_0</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Found_Rental_records</name>
+            <name>Found_Rental_record</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>getRentalRecords</leftValueReference>
@@ -63,9 +86,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_RentalCollection</targetReference>
+                <targetReference>AssignRentalRecordNewValues</targetReference>
             </connector>
-            <label>Found Rental records</label>
+            <label>Found Rental record</label>
         </rules>
     </decisions>
     <interviewLabel>Send Email to Customer {!$Flow.CurrentDateTime}</interviewLabel>
@@ -92,8 +115,8 @@
     <recordLookups>
         <name>getRentalRecords</name>
         <label>getRentalRecords</label>
-        <locationX>175</locationX>
-        <locationY>217</locationY>
+        <locationX>176</locationX>
+        <locationY>232</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Do_Rental_records_Exist</targetReference>
@@ -113,28 +136,15 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>Update_RentalCollection</name>
-        <label>Update_RentalCollection</label>
-        <locationX>565</locationX>
-        <locationY>225</locationY>
+        <description>Update returned checkbox and the Date Returned</description>
+        <name>upDateRentalRecord</name>
+        <label>upDateRentalRecord</label>
+        <locationX>634</locationX>
+        <locationY>229</locationY>
         <connector>
             <targetReference>Send_Email_Alert</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Stock__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>recordId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Returned__c</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>Rental__c</object>
+        <inputReference>getRentalRecords</inputReference>
     </recordUpdates>
     <start>
         <locationX>50</locationX>
@@ -162,14 +172,6 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>RentalCollectionUpdated</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <objectType>Rental__c</objectType>
     </variables>
     <variables>
         <name>titleId</name>
