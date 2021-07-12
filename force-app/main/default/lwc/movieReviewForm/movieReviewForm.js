@@ -14,7 +14,7 @@ export default class MovieReviewForm extends LightningElement {
   @track rating80 = false;
   @track rating100 = false;
 
-  @track selectedRating;
+  @track selectedRating = 0;
 
   openModal() {
     this.isModalOpen = true;
@@ -36,14 +36,6 @@ export default class MovieReviewForm extends LightningElement {
     this.closeModal();
   }
 
-  handleSuccess(event) {
-    const payload = event.detail.fields;
-    console.log(JSON.stringify(payload.Title__c) + "title");
-    console.log(JSON.stringify(payload.Review__c) + "review");
-    console.log(JSON.stringify(payload.Reviewer__c) + "reviewer");
-    console.log(JSON.stringify(payload.Rating__c) + "rating");
-  }
-
   handleRating20() {
     if (this.rating20 === false) {
       this.rating20 = true;
@@ -51,7 +43,7 @@ export default class MovieReviewForm extends LightningElement {
       this.rating60 = false;
       this.rating80 = false;
       this.rating100 = false;
-      this.selectedRating = 0.2;
+      this.selectedRating = 20;
     } else {
       this.setRatingsFalse();
     }
@@ -64,7 +56,7 @@ export default class MovieReviewForm extends LightningElement {
       this.rating60 = false;
       this.rating80 = false;
       this.rating100 = false;
-      this.selectedRating = 0.4;
+      this.selectedRating = 40;
     } else {
       this.setRatingsFalse();
     }
@@ -77,7 +69,7 @@ export default class MovieReviewForm extends LightningElement {
       this.rating60 = true;
       this.rating80 = false;
       this.rating100 = false;
-      this.selectedRating = 0.6;
+      this.selectedRating = 60;
     } else {
       this.setRatingsFalse();
     }
@@ -89,7 +81,7 @@ export default class MovieReviewForm extends LightningElement {
       this.rating60 = true;
       this.rating80 = true;
       this.rating100 = false;
-      this.selectedRating = 0.8;
+      this.selectedRating = 80;
     } else {
       this.setRatingsFalse();
     }
@@ -101,7 +93,7 @@ export default class MovieReviewForm extends LightningElement {
       this.rating60 = true;
       this.rating80 = true;
       this.rating100 = true;
-      this.selectedRating = 1.0;
+      this.selectedRating = 100;
     } else {
       this.setRatingsFalse();
     }
@@ -113,6 +105,6 @@ export default class MovieReviewForm extends LightningElement {
     this.rating60 = false;
     this.rating80 = false;
     this.rating100 = false;
-    this.selectedRating = 0.0;
+    this.selectedRating = 0;
   }
 }
