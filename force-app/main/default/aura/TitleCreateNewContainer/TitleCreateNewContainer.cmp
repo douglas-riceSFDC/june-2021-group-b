@@ -1,0 +1,11 @@
+<aura:component 
+        implements  ="flexipage:availableForAllPageTypes" 
+        controller  ="TitleCreateNewPicklistController"
+        >
+
+    <aura:attribute name="movieTitles" type="String"></aura:attribute>
+
+    <c:titleCreateNew movieTitles="{!v.movieTitle}" onvaluechange="{!c.getValueFromLwc}"> </c:titleCreateNew>
+
+
+</aura:component>	
