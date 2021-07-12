@@ -5,11 +5,11 @@ global with sharing class OmdbConnection {
     // (?) TODO:    -> Reference from encrypted .txt file (?)
     //              -> or label?
     private String omdbKey = '4339b121';
-
+    
     public void OmdbConnection(){}
 
-    // Have the user en
-    public List<OmdbWrapperClass> getMovieListFromTitle(String title){
+    // Have the user enter a title and recieve a list of movies.
+    public String getMovieListFromTitle(String title){
         if(title == null){
             System.debug('Title was null, unable to process.');
             return null;
@@ -19,9 +19,11 @@ global with sharing class OmdbConnection {
 
         HttpResponse res = getOmdbResponse(title);
 
-        List<OmdbWrapperClass> movies = parseOmdbJsonFromHttpResponse(res);
+        return res.getBody();
 
-        return movies;
+        //List<OmdbWrapperClass> movies = parseOmdbJsonFromHttpResponse(res);
+
+        //return movies;
 
     }
 
