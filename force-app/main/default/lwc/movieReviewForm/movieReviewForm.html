@@ -1,0 +1,114 @@
+<template>
+  <lightning-button
+    variant="brand"
+    label="Review"
+    title="Review Button"
+    onclick={openModal}
+  >
+  </lightning-button>
+  <template if:true={isModalOpen}>
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open"
+    >
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+            Leave a Review
+          </h2>
+        </header>
+        <div
+          class="slds-modal__content slds-var-p-around_medium"
+          id="modal-content-id-1"
+        >
+          <lightning-record-edit-form
+            object-api-name={objectApiName}
+            onsubmit={handleSubmit}
+          >
+            <lightning-messages> </lightning-messages>
+            <div class="slds-form-element_stacked slds-form-element">
+              <label class="labelStyle">Rating</label>
+              <div>
+                <lightning-button-icon-stateful
+                  icon-name="utility:favorite"
+                  selected={rating20}
+                  onclick={handleRating20}
+                  size="x-small"
+                  alternative-text="20%"
+                  variant="bare"
+                  class="slds-var-m-left_xx-small"
+                  title="Star"
+                ></lightning-button-icon-stateful>
+                <lightning-button-icon-stateful
+                  icon-name="utility:favorite"
+                  selected={rating40}
+                  onclick={handleRating40}
+                  size="x-small"
+                  alternative-text="40%"
+                  variant="bare"
+                  class="slds-var-m-left_xx-small"
+                  title="Star"
+                ></lightning-button-icon-stateful>
+                <lightning-button-icon-stateful
+                  icon-name="utility:favorite"
+                  selected={rating60}
+                  onclick={handleRating60}
+                  size="x-small"
+                  alternative-text="60%"
+                  variant="bare"
+                  class="slds-var-m-left_xx-small"
+                  title="Star"
+                ></lightning-button-icon-stateful>
+                <lightning-button-icon-stateful
+                  icon-name="utility:favorite"
+                  selected={rating80}
+                  onclick={handleRating80}
+                  size="x-small"
+                  alternative-text="80%"
+                  variant="bare"
+                  class="slds-var-m-left_xx-small"
+                  title="Star"
+                ></lightning-button-icon-stateful>
+                <lightning-button-icon-stateful
+                  icon-name="utility:favorite"
+                  selected={rating100}
+                  onclick={handleRating100}
+                  size="x-small"
+                  alternative-text="100%"
+                  variant="bare"
+                  class="slds-var-m-left_xx-small"
+                  title="Star"
+                ></lightning-button-icon-stateful>
+              </div>
+            </div>
+            <lightning-input-field
+              field-name="Review__c"
+            ></lightning-input-field>
+
+            <lightning-button
+              name="cancel"
+              label="Cancel"
+              onclick={closeModal}
+              class="slds-var-m-left_x-small"
+            >
+            </lightning-button>
+
+            <lightning-button
+              type="submit"
+              name="submit"
+              variant="brand"
+              label="Submit Review"
+              class="slds-var-m-left_x-small"
+            >
+            </lightning-button>
+          </lightning-record-edit-form>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>
