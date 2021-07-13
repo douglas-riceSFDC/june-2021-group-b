@@ -1,0 +1,27 @@
+<template>
+  <lightning-card title="My Current Rentals" icon-name="custom:custom30">
+    <div class="slds-var-m-around_small">
+      <template for:each={records} for:item="singleRecord">
+        <p key={singleRecord.Id} class="slds-var-m-around_small">
+          <img
+            class="thumbnail"
+            src={singleRecord.rentedTitle.Stock__r.Poster__c}
+            alt={singleRecord.rentedTitle.Name}
+          />
+          <br /><br />
+          {singleRecord.rentedTitle.Stock__r.Title_Name__c} -
+          <template if:true={singleRecord.isOverDue}>
+            <h2>{singleRecord.rentedTitle.Due_Date__c}</h2>
+            <br />
+          </template>
+          <template if:false={singleRecord.isOverDue}>
+            {singleRecord.rentedTitle.Due_Date__c} <br />
+          </template>
+        </p>
+      </template>
+      <template if:true={errors}>
+        There is an Error while fetching data.
+      </template>
+    </div>
+  </lightning-card>
+</template>

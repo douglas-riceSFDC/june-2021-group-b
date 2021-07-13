@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>PopulateStockURL</fullName>
+        <field>Poster__c</field>
+        <formula>Title__r.Poster__c</formula>
+        <name>PopulateStockURL</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdatePriorStatusValue</fullName>
+        <field>PriorStatusValue__c</field>
+        <formula>TEXT(PRIORVALUE( Status__c ))</formula>
+        <name>UpdatePriorStatusValue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>PopulateStockURL</fullName>
+        <actions>
+            <name>PopulateStockURL</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>UpdatePriorStatusValue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Stock__c.Title_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>
