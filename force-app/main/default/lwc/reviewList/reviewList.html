@@ -1,0 +1,25 @@
+<template>
+  <div class="slds-align_absolute-center">
+    <lightning-button
+      variant="outline_brand"
+      label="View Reviews"
+      title="Review Button"
+      onclick={toggleReviews}
+    ></lightning-button>
+  </div>
+
+  <template if:true={showReviews}>
+    <lightning-card title="Recent Reviews">
+      <c-display-reviews reviews={reviews}></c-display-reviews>
+      <div class="slds-align_absolute-center">
+        <lightning-button
+          variant="outline_brand"
+          label={moreReviewsLabel}
+          title="Load Review Button"
+          onclick={addMoreReviews}
+          disabled={thereAreNoMoreReviews}
+        ></lightning-button>
+      </div>
+    </lightning-card>
+  </template>
+</template>

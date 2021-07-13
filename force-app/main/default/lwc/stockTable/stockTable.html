@@ -1,22 +1,10 @@
 <template>
-    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            <template for:each={stock} for:item="s">
-                <tr key={s.Id}>
-                    <td><a onclick={selectStock}>{s.Name}</a></td>
-                    <td>{s.Status__c}</td>
-                </tr>
-            </template>
-
-        </tbody>
-
-    </table>
-
+  <div onclick={handleTitleSelection}>
+    <lightning-card title={title.Name}>
+      <slot></slot>
+      <div slot="footer">
+        Available {title.Available_Stock__c} / {title.Total_Stock__c}
+      </div>
+    </lightning-card>
+  </div>
 </template>
