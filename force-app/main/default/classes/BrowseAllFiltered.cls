@@ -16,7 +16,7 @@ public with sharing class BrowseAllFiltered {
         }
 
         for (Title__c t : allTitles) {
-            if (t.Genre__c != null) {
+            if (t.Genre__c != null && genre != null) {
                 String[] genres = t.Genre__c.split(';');
 
                 for (String s : genres) {
@@ -24,8 +24,11 @@ public with sharing class BrowseAllFiltered {
                         filteredTitles.add(t);
                     }
                 }
+            } else {
+                filteredTitles.add(t);
             }
         }
+        system.debug(filteredTitles);
         return filteredTitles;
     }
 

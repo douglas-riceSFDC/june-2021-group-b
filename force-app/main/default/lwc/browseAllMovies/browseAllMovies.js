@@ -9,7 +9,10 @@ export default class BrowseAllMovies extends LightningElement {
 
     handleSelectedGenreEvent(event) {
         this.genre = event.target.value;
-        if(this.genre !== "" && this.orderBy !== "") {
+        if(this.genre !== "") {
+            if (this.orderBy == "") {
+                this.orderBy = 'Release Date';
+            }
             getFilteredTitles({genre: this.genre,
                                orderBy: this.orderBy
                 })
@@ -25,7 +28,7 @@ export default class BrowseAllMovies extends LightningElement {
 
     handleSelectedOrderEvent(event) {
         this.orderBy = event.target.value;
-        if(this.orderBy !== "" && this.genre !== "") {
+        if(this.orderBy !== "") {
             getFilteredTitles({genre: this.genre,
                                orderBy: this.orderBy
                 })
@@ -37,5 +40,6 @@ export default class BrowseAllMovies extends LightningElement {
                     console.log(error);
                 });
         }
+        console.log(this.records);
     }
 }
