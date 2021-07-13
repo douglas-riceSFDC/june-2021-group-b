@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title="Browse All">
+
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="select-01"></label>
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" id="select-genre" onclick={handleSelectedGenreEvent}>
+                  <option value="">Genre</option>
+                  <option>Action</option>
+                  <option>Horror</option>
+                  <option>Comedy</option>
+                  <option>Thriller</option>
+                  <option>Sci-Fi</option>
+                  <option>Drama</option>
+                  <option>Adventure</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="select-01"></label>
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" id="select-order" onclick={handleSelectedOrderEvent}>
+                  <option value="">Sort By</option>
+                  <option>Release Date</option>
+                  <option>Highest Rated</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        
+        <div class="slds-grid">
+		      <template for:each={records} for:item="record">
+		    	  <div key={title.Id} class="slds-col slds-size_1-of-10 slds-var-p-around_small">
+				      <c-title-card title={record}></c-title-card>
+			      </div>
+		      </template>
+	      </div>
+        
+    </lightning-card>
+</template>

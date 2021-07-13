@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Require_Damage_Description</fullName>
     <active>true</active>
-    <description>When Status is set to Damaged, a Damage Description is required.</description>
-    <errorConditionFormula>AND( ISCHANGED( Status__c ),  ISPICKVAL( Status__c , &quot;Damaged&quot;),  ISBLANK( Damage_Description__c ))</errorConditionFormula>
+    <description
+  >When Status is set to Damaged, a Damage Description is required.</description>
+    <errorConditionFormula
+  >AND( ISCHANGED( Status__c ),  ISPICKVAL( Status__c , &quot;Damaged&quot;),  ISBLANK( Damage_Description__c ))</errorConditionFormula>
     <errorDisplayField>Damage_Description__c</errorDisplayField>
     <errorMessage>Please fill out a Damage Description</errorMessage>
 </ValidationRule>
