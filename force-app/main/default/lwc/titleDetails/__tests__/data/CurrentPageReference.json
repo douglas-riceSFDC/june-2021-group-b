@@ -1,0 +1,31 @@
+{
+  "fields": {
+    "Title": {
+      "value": "Inception"
+    },
+    "Release_Date__c": {
+      "value": "Inception"
+    },
+    "Genre__c": {
+      "value": "Inception"
+    },
+    "Stock_Available__c": {
+      "value": "Inception"
+    },
+    "Director__c": {
+      "value": "Inception"
+    },
+    "Runtime__c": {
+      "value": "Inception"
+    },
+    "Writer__c": {
+      "value": "Inception"
+    },
+    "Plot_Description__c": {
+      "value": "Inception"
+    },
+    "Notable_Actors__c": {
+      "value": "Inception"
+    }
+  }
+}
