@@ -11,7 +11,8 @@ public with sharing class MovieReviewAuraService {
         Reviewer__r.Name,
         Reviewer__r.IsProfilePhotoActive,
         Reviewer__r.MediumPhotoUrl,
-        CreatedDate
+        CreatedDate,
+        Title__r.Name
       FROM Movie_Review__c
       WHERE Title__c = :title
       ORDER BY CreatedDate DESC
