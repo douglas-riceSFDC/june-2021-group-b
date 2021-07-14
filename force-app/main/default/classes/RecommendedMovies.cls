@@ -15,13 +15,13 @@ public with sharing class RecommendedMovies {
 
         Set<String> myGenres = new Set<String>();
         for (Rental__c myRental : userRentals) {
-            myGenres.addAll(myRental.Stock__r.Title__r.Genre__c.split(';'));
+            myGenres.addAll(myRental.Stock__r.Title__r.Genre__c.split(','));
             
         }
 
         for (Title__c t : allTitles) {
             if (t.Genre__c != null ) {
-                String[] genres = t.Genre__c.split(';');
+                String[] genres = t.Genre__c.split(',');
 
                 boolean hasGenre = false;
                 for (String genre : genres) {
