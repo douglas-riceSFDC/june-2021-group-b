@@ -1,0 +1,34 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:searchInterface,forceCommunity:availableForAllPageTypes"
+                controller="AdvancedSearchController"
+                access="global">
+    
+    <aura:attribute name="accountSearchResults" type="List" default="{'sobjectType':'Title__c'}"/>
+    <aura:attribute name="searchVal" type="String" default=" "/>
+    <aura:attribute name="filterVal" type="String[]" default=" , 
+                                                              Movie Title, 
+                                                              Actor, 
+                                                              Director, 
+                                                              Writer" />
+    <aura:attribute name="filterSelection" type="String" default=""/>
+    <aura:attribute name="cbaseURL" type="String"/>
+    <aura:attribute name="tempURL" type="String"/>
+    
+    <lightning:select label="Search by Filter" name="filter" value="{!v.filterSelection}">
+        <aura:iteration items="{!v.filterVal}" var="val">
+            <option value="{!val}" text="{!val}"/>
+        </aura:iteration>
+    </lightning:select>
+    
+    <lightning:input label="Search Here" name="searchBar" value="{!v.searchVal}" onchange="{!c.searchForAccounts}"></lightning:input>
+    
+    <aura:iteration items="{!v.accountSearchResults}" var="searchResult">
+     	<p>
+         <lightning:formattedUrl label="{!searchResult.Name}" 
+                                    value="{!v.cbaseURL + searchResult.Id}" 
+                                    tooltip="{!searchResult.Name}"></lightning:formattedUrl>
+        </p>
+       
+    </aura:iteration>
+    
+    
+</aura:component>
