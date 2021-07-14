@@ -10,7 +10,8 @@
         <p class="slds-text-align_left">Review: {review.Review__c}</p>
 
         <p class="slds-text-align_left">
-          {review.Reviewer__r.Name} on
+          {review.Reviewer__r.Name} on&nbsp;
+
           <lightning-formatted-date-time
             value={review.CreatedDate}
             year="numeric"
@@ -21,7 +22,6 @@
             weekday="long"
             hour12="true"
           ></lightning-formatted-date-time>
-          (Placeholder until profiles pictures set up)
         </p>
       </lightning-accordion-section>
     </template>
