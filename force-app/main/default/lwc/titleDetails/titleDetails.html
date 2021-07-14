@@ -54,22 +54,23 @@
                 <div
                   class="slds-var-p-around_medium slds-align_absolute-center"
                   style="height: 10rem"
-                  if:true={available}
+                  if:true={areStockAvailable}
                 >
                   <lightning-button
                     variant="brand"
                     label="Rent"
                     title="Rent Button"
+                    onclick={handleRental}
                   ></lightning-button>
                 </div>
                 <div
                   class="slds-var-p-around_medium slds-align_absolute-center"
                   style="height: 10rem"
-                  if:false={available}
+                  if:false={areStockAvailable}
                 >
                   <lightning-button
                     variant="brand"
-                    label="No Copies Available"
+                    label={rentDisabledMessage}
                     title="Rent Button"
                     disabled="true"
                   ></lightning-button>
