@@ -42,7 +42,6 @@ public class RentalController {
         Name,
         Reviewer_Name__c,
         CreatedDate,
-        Reviewer__r.Name,
         Rating__c,
         Review__c,
         Title__c,

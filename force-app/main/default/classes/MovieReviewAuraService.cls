@@ -8,7 +8,7 @@ public with sharing class MovieReviewAuraService {
       SELECT
         Rating__c,
         Review__c,
-        Reviewer__r.Name,
+        Reviewer_Name__c,
         Reviewer__r.IsProfilePhotoActive,
         Reviewer__r.MediumPhotoUrl,
         CreatedDate,

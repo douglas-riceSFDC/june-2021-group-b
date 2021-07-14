@@ -4,14 +4,14 @@
       <lightning-accordion-section
         name={review.Name}
         key={review.Name}
-        label={review.Reviewer__r.Name}
+        label={review.Reviewer_Name__c}
       >
         <p class="slds-text-align_left">Film: {review.Title__r.Name}</p>
         <p class="slds-text-align_left">Rating: {review.Rating__c}%</p>
         <p class="slds-text-align_left">Review: {review.Review__c}</p>
 
         <p class="slds-text-align_left">
-          {review.Reviewer__r.Name} on&nbsp;
+          {review.Reviewer_Name__c} on&nbsp;
 
           <lightning-formatted-date-time
             value={review.CreatedDate}
