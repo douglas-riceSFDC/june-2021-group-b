@@ -1,4 +1,11 @@
-.slds-grid {
-  max-height: 210px;
+.imageSize {
+  max-height: 230px;
+
   max-width: 140px;
+}
+
+.noOverflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -1,7 +1,12 @@
 <template>
   <div onclick={handleTitleSelection}>
-    <div class="slds-grid">
-      <img title="poster" src={title.Poster__c} />
+    <div class="imageSize">
+      <figure>
+        <figcaption class="slds-text-align_center noOverflow">
+          <b>{title.Name}</b>
+        </figcaption>
+        <img title="poster" src={title.Poster__c} alt={title.Name} />
+      </figure>
     </div>
   </div>
 </template>
