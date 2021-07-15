@@ -1,0 +1,21 @@
+<aura:component
+  implements="forceCommunity:availableForAllPageTypes, flexipage:availableForAllPageTypes"
+  access="global"
+>
+  <aura:attribute name="showFlow" type="Boolean" />
+
+  <div class="slds-align_absolute-center">
+    <lightning:button
+      variant="brand"
+      label="Request a Movie"
+      title="Request a Movie"
+      onclick="{!c.launchFlow}"
+    />
+  </div>
+  <aura:if isTrue="{!v.showFlow}">
+    <lightning:flow
+      aura:id="movieFlow"
+      onstatuschange="{!c.handleStatusChange}"
+    />
+  </aura:if>
+</aura:component>
