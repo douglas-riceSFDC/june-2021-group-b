@@ -1,0 +1,25 @@
+lightning-input{
+    max-width: 100%;
+}
+
+button{
+    width:100px;
+}
+
+p{
+    margin-bottom:0px;
+    padding-bottom:0px;
+    margin-top:20px;
+}
+
+.slds-form{
+    height:150px;
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.slds-select_container{
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}

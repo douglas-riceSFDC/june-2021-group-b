@@ -1,16 +1,12 @@
 @isTest
 global class OmdbConnectionTestMockImpl implements HttpCalloutMock{
     private String omdbURLBase = 'http://www.omdbapi.com/';
-
-    // (?) TODO:    -> Reference from encrypted .txt file (?)
-    //              -> Or label?
     private String omdbKey = '4339b121';
 
     global HttpResponse respond(HTTPRequest req){
         String omdbSearchString = '?s=%27' + 'Harry%20Potter' + '%27&apikey=' + omdbKey;
         String omdbURL = omdbURLBase + omdbSearchString;
 
-        // System.assertEquals('http://api.salesforce.com/foo/bar', req.getEndpoint());
         System.assertEquals(omdbURL, req.getEndpoint());
         System.assertEquals('GET', req.getMethod());
 
