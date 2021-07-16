@@ -1,14 +1,108 @@
 <template>
     <lightning-card>
-        <div class="slds-m-vertical_medium">
+        <div class="slds-m-vertical_large">
             <div id="displayContainer">
-                <h1 class="slds-text_heading_large">Enter New Title:</h1>
-                <p>{movieTitle}</p>
+
+                <div class="slds-form" role="list">
+
+                    <div class="slds-form__row">
+                        <div class="slds-form__item" role="listitem">
+                            <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                                <label class="slds-form-element__label" for="titleSearch">Title name: </label>
+                                <div class="slds-form-element__control">
+                                    <lightning-input    
+                                        type="text"     
+                                        id="titleSearch"    
+                                        data-name="titleSearch"></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-form__item" role="listitem">
+                            <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                                <label class="slds-form-element__label" for="stockAmount"># of Stock: </label>
+                                <div class="slds-form-element__control">
+                                    <lightning-input    
+                                        type="number"   
+                                        id="stockAmount"    
+                                        data-name="stockAmount" ></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="slds-form__row">
+                        <div class="slds-form__item" role="listitem">
+                            <div class="slds-form-element slds-form-element_horizontal slds-is-editing slds-form-element_1-col">
+
+                                <template if:true={show}>
+                                    <span>
+                                
+                                        <label class="slds-form-element__label" for="selectTitle">Select Title: </label>
+
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-elementl slds-media__figure" >
+                                                <div class="slds-select_container" >
+                                                    <select class="slds-select" 
+                                                            name="selectTitle" 
+                                                            onchange={handleChange} 
+                                                            >
+                                                    
+                                                        <option value="">Select Title...</option>
             
-                <lightning-input    type="text"     id="titleSearch"    data-name="titleSearch" label="Enter the title name:"></lightning-input>
-                <lightning-input    type="number"   id="stockAmount"    data-name="stockAmount" label="Enter the number of stock:"></lightning-input>
-                <lightning-button   variant="brand-outline" label="Search" onclick={onClickRetrieveTitles} class="slds-m-left_x-small"></lightning-button>
+                                                        <template for:each={movieTitle} for:item="movie" >
+                                                            <option key={movie.imdbID} 
+                                                                    class="uiInputSelectOption" 
+                                                                    value={movie.imdbID} >
+                                                                {movie.Title}
+                                                            </option>
+                                                        </template>
+            
+                                                    </select>
+            
+                                                </div>
+                                            </div>
+                                            
+            
+                                        </div>
+
+                                    </span>
+                                </template>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="slds-modal__footer">   
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <span>
+                                <button onclick={onClickRetrieveTitles} class="slds-button slds-button_outline-brand slds-float_left">Search</button>
+                            </span>
+                        </div>
+
+                        <div class="slds-col">
+                            <span>
+                                <template if:true={show}>
+                                    <button onclick={onClickSubmitTitle} class="slds-button slds-button_brand slds-float_right">Submit</button>
+                            
+                                </template>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
+                
             </div>
         </div>
+
     </lightning-card>
 </template>
